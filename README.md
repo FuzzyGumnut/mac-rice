@@ -1,6 +1,22 @@
+k# Ayu Mac Rice
+![Desktop](screenshots/desktop.png)
+A clean Ayu-themed macOS setup featuring:
+
+* AeroSpace
+* SketchyBar
+* Ghostty
+* Starship
+* Fastfetch
+* Spotify integration
+* Tailscale status
+* X-VPN status
+* CPU, RAM, Disk, Battery and Volume indicators
+
+---
+
 ## Installation
 
-Clone the repository:
+Clone the repository and run the installer:
 
 ```bash
 git clone https://github.com/FuzzyGumnut/mac-rice.git
@@ -16,35 +32,21 @@ chmod +x install.sh
 
 ## What Gets Installed
 
-The installer will automatically install:
+The installer automatically installs:
 
 * AeroSpace
 * SketchyBar
+* Ghostty
 * Starship
 * Fastfetch
 * Borders
+* JetBrainsMono Nerd Font
 
-It will also copy all included configuration files into the correct locations.
+It also copies all included configuration files into the correct locations.
 
 ---
 
 ## Required After Installation
-
-### Install JetBrainsMono Nerd Font
-
-Download and install:
-
-https://www.nerdfonts.com/font-downloads
-
-Search for:
-
-```text
-JetBrainsMono Nerd Font
-```
-
----
-
-### Enable macOS Permissions
 
 Open:
 
@@ -121,4 +123,14 @@ git pull
 * Starship Prompt
 * Fastfetch
 * JetBrainsMono Nerd Font
+
+---
+
+## Notes
+
+If AeroSpace does not start immediately after installation, log out and back in.
+
+If icons appear as squares or missing symbols, ensure JetBrainsMono Nerd Font is installed and selected in Ghostty.
+
+The installer does not install Spotify, Tailscale, X-VPN, or Raycast automatically.
 
