@@ -1,0 +1,139 @@
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+# AYU DARK COLORS
+BG=0xcc0f1419
+ITEM_BG=0x332b3540
+TEXT=0xffe6e1cf
+ACCENT=0xffffb454   # Orange
+GREEN=0xffaad94c
+BLUE=0xff59c2ff
+YELLOW=0xffffd580
+RED=0xfff07178
+
+# BAR
+sketchybar --bar \
+  position=top \
+  height=38 \
+  blur_radius=30 \
+  color=0x22000000 \
+  sticky=on
+
+# DEFAULTS
+default=(
+  icon.font="JetBrainsMono Nerd Font:ExtraBold:14.0"
+  label.font="JetBrainsMono Nerd Font:ExtraBold:12.0"
+
+  icon.color=$TEXT
+  label.color=$TEXT
+
+  icon.padding_left=6
+  icon.padding_right=6
+
+  label.padding_left=4
+  label.padding_right=8
+
+  padding_left=4
+  padding_right=4
+)
+
+sketchybar --default "${default[@]}"
+
+# WORKSPACES
+SPACE_ICONS=("WEB" "CODE" "TERM" "FILES" "CHAT" "MEDIA" "NET" "VM" "MISC" "SYS")
+
+for i in "${!SPACE_ICONS[@]}"
+do
+  sid="$(($i+1))"
+
+  sketchybar --add space space.$sid left \
+             --set space.$sid \
+             space=$sid \
+             icon="${SPACE_ICONS[i]}" \
+             icon.padding_left=10 \
+             icon.padding_right=10 \
+             icon.highlight_color=$ACCENT \
+             background.color=$ITEM_BG \
+             background.corner_radius=8 \
+             background.height=24 \
+             label.drawing=off \
+             script="$PLUGIN_DIR/space.sh"
+done
+
+
+# CPU
+sketchybar --add item cpu left \
+           --set cpu \
+           icon=󰍛 \
+           icon.color=$TEXT \
+           update_freq=5 \
+           script="$PLUGIN_DIR/cpu.sh"
+
+# RAM
+sketchybar --add item ram left \
+           --set ram \
+           icon=󰘚 \
+           icon.color=$TEXT \
+           update_freq=10 \
+           script="$PLUGIN_DIR/ram.sh"
+
+# RIGHT SIDE
+# DISPLAY:
+# MUSIC | TAILSCALE | DISK | VOLUME | BATTERY | CLOCK
+#
+
+# CLOCK
+sketchybar --add item clock right \
+           --set clock \
+           icon=󰥔 \
+           icon.color=$ACCENT \
+           update_freq=10 \
+           script="$PLUGIN_DIR/clock.sh"
+
+# BATTERY
+sketchybar --add item battery right \
+           --set battery \
+           icon.color=0xffaad94c \
+           update_freq=120 \
+           script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change
+
+# VOLUME
+sketchybar --add item volume right \
+           --set volume \
+           icon.color=0xff59c2ff \
+           script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change
+
+# DISK
+sketchybar --add item disk right \
+           --set disk \
+           icon=󰋊 \
+           icon.color=0xffd2a6ff \
+           update_freq=60 \
+           script="$PLUGIN_DIR/disk.sh"
+
+# TAILSCALE
+sketchybar --add item tailscale right \
+           --set tailscale \
+           icon=󰖂 \
+           icon.color=0xff59c2ff \
+           update_freq=30 \
+           script="$PLUGIN_DIR/tailscale.sh"
+
+# X-VPN
+sketchybar --add item xvpn right \
+           --set xvpn \
+           icon=󰖂 \
+           icon.color=0xff59c2ff \
+           update_freq=10 \
+           script="$PLUGIN_DIR/xvpn.sh"
+# MUSIC
+sketchybar --add item music right \
+           --set music \
+           icon=󰎈 \
+           icon.color=$ACCENT \
+           label.max_chars=18 \
+           update_freq=5 \
+           script="$PLUGIN_DIR/music.sh"
+
+sketchybar --update
