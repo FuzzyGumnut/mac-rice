@@ -1,8 +1,9 @@
-# Ayu Mac Rice
+k# Ayu Mac Rice
 
 <p align="center">
   <img src="screenshots/desktop.png" width="90%">
 </p>
+
 A clean Ayu-themed macOS setup featuring:
 
 * AeroSpace
@@ -10,6 +11,7 @@ A clean Ayu-themed macOS setup featuring:
 * Ghostty
 * Starship
 * Fastfetch
+* Borders
 * Spotify integration
 * Tailscale status
 * X-VPN status
@@ -45,7 +47,15 @@ The installer automatically installs:
 * Borders
 * JetBrainsMono Nerd Font
 
-It also copies all included configuration files into the correct locations.
+It also:
+
+* Copies all configuration files
+* Sets the included wallpaper
+* Hides the Dock
+* Hides the macOS Menu Bar
+* Hides Desktop Icons
+* Restarts Finder and Dock
+* Starts SketchyBar services
 
 ---
 
@@ -61,6 +71,16 @@ Enable:
 
 * AeroSpace
 * SketchyBar
+
+Open:
+
+```text
+System Settings → Privacy & Security → Screen Recording
+```
+
+Enable:
+
+* Borders
 
 You may need to log out and back in after granting permissions.
 
@@ -127,6 +147,13 @@ git pull
 * Fastfetch
 * JetBrainsMono Nerd Font
 
+### macOS Tweaks
+
+* Auto-Hide Dock
+* Auto-Hide Menu Bar
+* Hidden Desktop Icons
+* Included Ayu Wallpaper
+
 ---
 
 ## Notes
@@ -135,7 +162,9 @@ If AeroSpace does not start immediately after installation, log out and back in.
 
 If icons appear as squares or missing symbols, ensure JetBrainsMono Nerd Font is installed and selected in Ghostty.
 
-The installer does not install Spotify, Tailscale, X-VPN, or Raycast automatically.
+Spotify, Tailscale, X-VPN, and Raycast are optional and are not installed automatically.
+
+This setup is designed for macOS and has been tested with AeroSpace, SketchyBar, Borders, Ghostty, Starship, and Fastfetch.
 
 ## Restart all
 
