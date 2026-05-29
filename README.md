@@ -1,4 +1,4 @@
-k# Ayu Mac Rice
+# Ayu Mac Rice
 
 <p align="center">
   <img src="screenshots/desktop.png" width="90%">
@@ -166,6 +166,3 @@ Spotify, Tailscale, X-VPN, and Raycast are optional and are not installed automa
 
 This setup is designed for macOS and has been tested with AeroSpace, SketchyBar, Borders, Ghostty, Starship, and Fastfetch.
 
-## Restart all
-
-brew services restart --all
