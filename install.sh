@@ -12,6 +12,22 @@ then
 fi
 
 # -------------------------
+# Wallpaper
+# -------------------------
+
+WALLPAPER="$(pwd)/screenshots/desktop.png"
+
+if [ -f "$WALLPAPER" ]; then
+osascript <<EOF
+tell application "System Events"
+    tell every desktop
+        set picture to "$WALLPAPER"
+    end tell
+end tell
+EOF
+fi
+
+# -------------------------
 # macOS UI Tweaks
 # -------------------------
 
