@@ -137,3 +137,6 @@ If icons appear as squares or missing symbols, ensure JetBrainsMono Nerd Font is
 
 The installer does not install Spotify, Tailscale, X-VPN, or Raycast automatically.
 
+## Restart all
+
+brew services restart --all
