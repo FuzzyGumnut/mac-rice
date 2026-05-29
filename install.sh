@@ -36,7 +36,8 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
-
+defaults write com.apple.finder CreateDesktop -bool false
+killall Finder
 killall Dock
 # -------------------------
 # Repositories
