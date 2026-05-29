@@ -1,5 +1,8 @@
-k# Ayu Mac Rice
-![Desktop](screenshots/desktop.png)
+# Ayu Mac Rice
+
+<p align="center">
+  <img src="screenshots/desktop.png" width="90%">
+</p>
 A clean Ayu-themed macOS setup featuring:
 
 * AeroSpace
