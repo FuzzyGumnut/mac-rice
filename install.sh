@@ -12,15 +12,29 @@ then
 fi
 
 # -------------------------
+# Repositories
+# -------------------------
+brew tap nikitabobko/tap
+brew tap homebrew/cask-fonts
+
+# -------------------------
 # Packages
 # -------------------------
 brew install sketchybar
 brew install starship
 brew install fastfetch
 brew install borders
-
-brew tap nikitabobko/tap
 brew install aerospace
+
+# -------------------------
+# Applications
+# -------------------------
+brew install --cask ghostty
+brew install --cask font-jetbrains-mono-nerd-font
+
+# Optional (uncomment if desired)
+# brew install --cask spotify
+# brew install --cask tailscale
 
 # -------------------------
 # Config Directories
@@ -42,6 +56,11 @@ if [ -f starship.toml ]; then
 fi
 
 # -------------------------
+# Permissions
+# -------------------------
+chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null
+
+# -------------------------
 # Start Services
 # -------------------------
 brew services restart sketchybar
@@ -54,15 +73,18 @@ aerospace reload-config 2>/dev/null
 echo ""
 echo "✅ Install Complete"
 echo ""
-echo "Still Required:"
-echo "1. Install JetBrainsMono Nerd Font"
-echo "2. System Settings > Privacy & Security > Accessibility"
-echo "3. Enable:"
-echo "   - AeroSpace"
-echo "   - SketchyBar"
+echo "IMPORTANT:"
+echo "Open:"
+echo "System Settings > Privacy & Security > Accessibility"
 echo ""
-echo "Optional:"
-echo "   - Spotify"
-echo "   - Tailscale"
-echo "   - X-VPN"
-echo "   - Raycast"
+echo "Enable:"
+echo "  • AeroSpace"
+echo "  • SketchyBar"
+echo ""
+echo "Recommended:"
+echo "  • Spotify"
+echo "  • Tailscale"
+echo "  • X-VPN"
+echo "  • Raycast"
+echo ""
+echo "If AeroSpace doesn't start immediately, log out and back in."
