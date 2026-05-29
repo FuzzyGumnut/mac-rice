@@ -16,15 +16,16 @@ fi
 # -------------------------
 brew tap nikitabobko/tap
 brew tap homebrew/cask-fonts
+brew tap FelixKratz/formulae
 
 # -------------------------
 # Packages
 # -------------------------
-brew install sketchybar
-brew install starship
-brew install fastfetch
-brew install borders
-brew install aerospace
+brew install sketchybar || true
+brew install starship || true
+brew install fastfetch || true
+brew install borders || true
+brew install aerospace || true
 
 # -------------------------
 # Applications
