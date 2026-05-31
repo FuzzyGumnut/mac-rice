@@ -98,7 +98,7 @@ brew services restart sketchybar
 # Reload AeroSpace
 # -------------------------
 aerospace reload-config 2>/dev/null
-
+cls
 echo ""
 echo "✅ Install Complete"
 echo ""
