@@ -30,10 +30,16 @@ fi
 # -------------------------
 # macOS UI Tweaks
 # -------------------------
-
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock show-recents -bool false
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+defaults write com.apple.dock expose-animation-duration -float 0.1
 
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 defaults write com.apple.finder CreateDesktop -bool false
@@ -45,6 +51,15 @@ killall Dock
 brew tap nikitabobko/tap
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
+
+# -------------------------
+# SCREENSHOT FOLDER
+# -------------------------
+mkdir -p ~/Pictures/Screenshots
+
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
+
+killall SystemUIServer
 
 # -------------------------
 # Packages
