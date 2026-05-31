@@ -93,7 +93,7 @@ chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null
 # Start Services
 # -------------------------
 brew services restart sketchybar
-
+brew services start borders
 # -------------------------
 # Reload AeroSpace
 # -------------------------
