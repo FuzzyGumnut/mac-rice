@@ -15,7 +15,7 @@ fi
 # Wallpaper
 # -------------------------
 
-WALLPAPER="$(pwd)/screenshots/desktop.png"
+WALLPAPER="$(pwd)/screenshots/background.png"
 
 if [ -f "$WALLPAPER" ]; then
 osascript <<EOF
