@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 echo "🚀 Installing Bowen's Ayu Mac Rice..."
 
 # -------------------------
@@ -98,7 +98,7 @@ brew services restart sketchybar
 # Reload AeroSpace
 # -------------------------
 aerospace reload-config 2>/dev/null
-cls
+clear
 echo ""
 echo "✅ Install Complete"
 echo ""
