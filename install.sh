@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "🚀 Installing Bowen's Ayu Mac Rice..."
+echo "🚀 Installing Ayu Mac Rice..."
 
 # -------------------------
 # Homebrew Check
