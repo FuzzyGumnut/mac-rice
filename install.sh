@@ -75,7 +75,7 @@ brew install aerospace || true
 # -------------------------
 brew install --cask ghostty
 brew install --cask font-jetbrains-mono-nerd-font
-
+brew install --cask obsidian
 # Optional (uncomment if desired)
 # brew install --cask spotify
 # brew install --cask tailscale
