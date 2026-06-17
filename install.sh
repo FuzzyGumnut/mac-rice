@@ -1,7 +1,37 @@
 #!/bin/bash
 clear
-echo "🚀 Installing Ayu Mac Rice..."
 
+if [ -f "./ayu-intro" ]; then
+    chmod +x ./ayu-intro
+
+    ./ayu-intro &
+    PID=$!
+
+    sleep 5
+
+    kill $PID 2>/dev/null
+    wait $PID 2>/dev/null
+fi
+
+clear
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "          Ayu Mac Rice"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "1) Full Install"
+echo "2) Exit"
+echo ""
+
+read -p "Select option: " OPTION
+
+case $OPTION in
+    1) ;;
+    *) exit 0 ;;
+esac
+
+clear
 # -------------------------
 # Homebrew Check
 # -------------------------
@@ -59,6 +89,9 @@ brew tap nikitabobko/tap
 brew tap homebrew/cask-fonts
 brew tap FelixKratz/formulae
 
+brew trust FelixKratz/formulae 2>/dev/null || true
+brew trust nikitabobko/tap 2>/dev/null || true
+
 # -------------------------
 # SCREENSHOT FOLDER
 # -------------------------
@@ -80,9 +113,6 @@ brew install aerospace || true
 # ------------------------ 
 # Trust
 # ------------------------
-brew trust FelixKratz/formulae 2>/dev/null || true
-brew trust nikitabobko/tap 2>/dev/null || true
-
 # -------------------------
 # Applications
 # -------------------------
