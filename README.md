@@ -4,18 +4,28 @@
   <img src="screenshots/desktop.png" width="90%">
 </p>
 
-A clean Ayu-themed macOS setup featuring:
+A minimal Ayu-themed macOS rice built around AeroSpace, SketchyBar and Ghostty.
 
-* AeroSpace
-* SketchyBar
-* Ghostty
-* Starship
+---
+
+## Features
+
+* AeroSpace Tiling Window Manager
+* SketchyBar Ayu Theme
+* Ghostty Terminal
+* Starship Prompt
 * Fastfetch
+* btop
 * Borders
-* Spotify integration
-* Tailscale status
-* X-VPN status
-* CPU, RAM, Disk, Battery and Volume indicators
+* Obsidian
+* JetBrainsMono Nerd Font
+* Spotify Integration
+* Tailscale Status
+* X-VPN Status
+* Animated Installer Intro
+* Automatic Wallpaper Setup
+* Automatic Screenshot Folder Setup
+* Minimal macOS Tweaks
 
 ---
 
@@ -44,18 +54,26 @@ The installer automatically installs:
 * Ghostty
 * Starship
 * Fastfetch
+* btop
 * Borders
+* Obsidian
 * JetBrainsMono Nerd Font
 
 It also:
 
 * Copies all configuration files
 * Sets the included wallpaper
+* Creates a dedicated Screenshots folder
 * Hides the Dock
 * Hides the macOS Menu Bar
 * Hides Desktop Icons
+* Disables Recent Apps in the Dock
+* Speeds up macOS animations
 * Restarts Finder and Dock
 * Starts SketchyBar services
+* Starts Borders
+* Applies AeroSpace configuration
+* Includes an animated installer intro
 
 ---
 
@@ -88,12 +106,13 @@ You may need to log out and back in after granting permissions.
 
 ## Optional Applications
 
-Install these for full functionality:
+During installation you can choose to install:
 
-* Spotify (Music Widget)
-* Tailscale (Tailscale Status Widget)
-* X-VPN (VPN Status Widget)
+* Spotify
+* Tailscale
 * Raycast
+
+These applications are optional and can be skipped.
 
 ---
 
@@ -117,15 +136,16 @@ git pull
 
 * Ayu Dark Theme
 * Music Widget
-* X-VPN Status
-* Tailscale Status
-* Disk Usage
-* Volume
-* Battery
-* Clock
+* Current App Indicator
 * CPU Usage
 * RAM Usage
-* Current App Indicator
+* Disk Usage
+* Battery Status
+* Volume Control
+* Clock
+* Network Status
+* Tailscale Status
+* X-VPN Status
 
 ### AeroSpace Workspaces
 
@@ -145,7 +165,15 @@ git pull
 * Ghostty
 * Starship Prompt
 * Fastfetch
+* btop
 * JetBrainsMono Nerd Font
+
+### Applications
+
+* Obsidian
+* Spotify (Optional)
+* Tailscale (Optional)
+* Raycast (Optional)
 
 ### macOS Tweaks
 
@@ -153,16 +181,35 @@ git pull
 * Auto-Hide Menu Bar
 * Hidden Desktop Icons
 * Included Ayu Wallpaper
+* Dedicated Screenshot Folder
+* Faster Window Animations
+* Faster Mission Control Animations
 
 ---
 
 ## Notes
 
-If AeroSpace does not start immediately after installation, log out and back in.
+* Includes an animated startup intro (`ayu-intro`)
+* Automatically applies the included wallpaper
+* Automatically creates `~/Pictures/Screenshots`
+* Borders requires Screen Recording permission
+* AeroSpace may require a logout/login after installation
+* If icons appear as squares, ensure JetBrainsMono Nerd Font is installed correctly
+* Designed and tested on Apple Silicon Macs
 
-If icons appear as squares or missing symbols, ensure JetBrainsMono Nerd Font is installed and selected in Ghostty.
+---
 
-Spotify, Tailscale, X-VPN, and Raycast are optional and are not installed automatically.
+## Screenshots
 
-This setup is designed for macOS and has been tested with AeroSpace, SketchyBar, Borders, Ghostty, Starship, and Fastfetch.
+### Desktop
+
+<p align="center">
+  <img src="screenshots/desktop.png" width="90%">
+</p>
+
+### Wallpaper
+
+<p align="center">
+  <img src="screenshots/background.png" width="90%">
+</p>
 

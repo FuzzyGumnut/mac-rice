@@ -1,0 +1,8 @@
+[09:41:11 2026-06-18] FETCHING Version 2.43.2
+[09:41:11 2026-06-18] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.43.2/spicetify-2.43.2-darwin-arm64.tar.gz
+[09:41:12 2026-06-18] EXTRACTING /Users/bowenduff/.spicetify/spicetify.tar.gz
+[09:41:12 2026-06-18] SETTING EXECUTABLE PERMISSIONS TO /Users/bowenduff/.spicetify/spicetify
+[09:41:12 2026-06-18] REMOVING /Users/bowenduff/.spicetify/spicetify.tar.gz
+[09:41:12 2026-06-18] spicetify path already set in /Users/bowenduff/.zshrc, continuing...
+[09:41:12 2026-06-18] spicetify v2.43.2 was installed successfully to /Users/bowenduff/.spicetify
+[09:41:12 2026-06-18] Run 'spicetify --help' to get started

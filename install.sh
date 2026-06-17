@@ -112,6 +112,7 @@ brew install starship || true
 brew install fastfetch || true
 brew install borders || true
 brew install aerospace || true
+brew install btop || true
 
 # ------------------------ 
 # Trust
@@ -190,6 +191,8 @@ if command -v aerospace >/dev/null 2>&1; then
     aerospace reload-config 2>/dev/null
 fi
 clear
+# SPICETIFY
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 # -------------------------
 # Install steps
 # -------------------------
@@ -215,3 +218,68 @@ echo ""
 echo ""
 echo "⚠️ For AeroSpace, Borders and permissions to work correctly:"
 echo "   Log out and back in after enabling permissions."
+
+clear
+
+sleep 1
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "              INSTALL COMPLETE"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo ""
+read -p "🚀 Launch showcase desktop? (Y/n): " SHOWCASE
+
+if [[ ! "$SHOWCASE" =~ ^[Nn]$ ]]; then
+
+# -------------------------
+# Hide Existing Apps
+# -------------------------
+
+osascript <<EOF
+tell application "System Events"
+    repeat with p in (every process whose background only is false)
+        try
+            set visible of p to false
+        end try
+    end repeat
+end tell
+EOF
+
+sleep 1
+open -a Spotify
+
+sleep 2
+
+open -na Ghostty
+
+sleep 1
+
+osascript <<EOF
+tell application "Ghostty" to activate
+tell application "System Events"
+    keystroke "clear && fastfetch"
+    key code 36
+end tell
+EOF
+
+sleep 1
+open -na Ghostty
+
+sleep 1
+
+osascript <<EOF
+tell application "Ghostty" to activate
+tell application "System Events"
+    keystroke "btop"
+    key code 36
+end tell
+EOF
+aerospace move right
+aerospace move right
+aerospace move right
+aerospace move right
+aerospace move right
+fi
+
+sleep 2
