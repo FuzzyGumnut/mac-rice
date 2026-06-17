@@ -203,11 +203,13 @@ git pull
 
 ### Desktop
 
-<p align="center">
-  <img src="screenshots/desktop.png" width="90%">
-</p>
-
 ## installer
 <p align="center">
   <img src="screenshots/installer.png" width="90%">
+</p>
+
+### Desktop
+
+<p align="center">
+  <img src="screenshots/desktop.png" width="90%">
 </p>
