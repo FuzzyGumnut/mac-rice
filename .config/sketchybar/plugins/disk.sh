@@ -1,5 +1,5 @@
 #!/bin/bash
 
-USED=$(df -h / | awk 'NR==2 {print $5}')
+FREE=$(df -h / | awk 'NR==2 {print $4}')
 
-sketchybar --set "$NAME" label="$USED"
+sketchybar --set "$NAME" label="$FREE Free"
