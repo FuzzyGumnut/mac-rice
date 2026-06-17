@@ -11,6 +11,13 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# Refresh shell environment after Homebrew install
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # -------------------------
 # Wallpaper
 # -------------------------
@@ -70,16 +77,50 @@ brew install fastfetch || true
 brew install borders || true
 brew install aerospace || true
 
+# ------------------------ 
+# Trust
+# ------------------------
+brew trust FelixKratz/formulae 2>/dev/null || true
+brew trust nikitabobko/tap 2>/dev/null || true
+
 # -------------------------
 # Applications
 # -------------------------
-brew install --cask ghostty
-brew install --cask font-jetbrains-mono-nerd-font
-brew install --cask obsidian
-# Optional (uncomment if desired)
-# brew install --cask spotify
-# brew install --cask tailscale
+brew install --cask ghostty || true
+brew install --cask font-jetbrains-mono-nerd-font || true
+brew install --cask obsidian || true
 
+hash -r
+# -------------------------
+# Optional Applications
+# -------------------------
+
+clear
+
+echo ""
+read -p "🎵 Install Spotify? (y/N): " INSTALL_SPOTIFY
+
+if [[ "$INSTALL_SPOTIFY" =~ ^[Yy]$ ]]; then
+    brew install --cask spotify
+fi
+
+clear
+
+echo ""
+read -p "🔒 Install Tailscale? (y/N): " INSTALL_TAILSCALE
+
+if [[ "$INSTALL_TAILSCALE" =~ ^[Yy]$ ]]; then
+    brew install --cask tailscale
+fi
+
+clear
+
+echo ""
+read -p "⚡ Install Raycast? (y/N): " INSTALL_RAYCAST
+
+if [[ "$INSTALL_RAYCAST" =~ ^[Yy]$ ]]; then
+    brew install --cask raycast
+fi
 
 # -------------------------
 # Config Directories
@@ -104,20 +145,22 @@ fi
 # Permissions
 # -------------------------
 chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null
-
 # -------------------------
 # Start Services
 # -------------------------
 brew services restart sketchybar
-brew services start borders
+brew services start borders || true
 # -------------------------
 # Reload AeroSpace
 # -------------------------
-aerospace reload-config 2>/dev/null
+if command -v aerospace >/dev/null 2>&1; then
+    aerospace reload-config 2>/dev/null
+fi
 clear
 # -------------------------
-# Optional XMRig Startup
+# Install steps
 # -------------------------
+open -a AeroSpace 2>/dev/null || true
 clear
 echo ""
 echo "✅ Install Complete"
@@ -136,5 +179,6 @@ echo "  • Tailscale"
 echo "  • X-VPN"
 echo "  • Raycast"
 echo ""
-echo "If AeroSpace doesn't start immediately, log out and back in."
-
+echo ""
+echo "⚠️ For AeroSpace, Borders and permissions to work correctly:"
+echo "   Log out and back in after enabling permissions."
