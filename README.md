@@ -213,7 +213,7 @@ git pull
   <img src="screenshots/background.png" width="90%">
 </p>
 
-#installer
+## installer
 <p align="center">
   <img src="screenshots/installer.png" width="90%">
 </p>
