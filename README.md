@@ -139,9 +139,11 @@ git clone https://github.com/FuzzyGumnut/mac-rice.git
 
 cd mac-rice
 
-chmod +x uninstall.sh
+chmod +x install.sh
 
-./uninstall.sh
+./install.sh
+
+# and select uninstall
 ```
 
 The uninstaller will:
