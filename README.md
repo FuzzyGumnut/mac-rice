@@ -135,6 +135,10 @@ git pull
 To completely remove Ayu Mac Rice and restore most macOS changes:
 
 ```bash
+git clone https://github.com/FuzzyGumnut/mac-rice.git
+
+cd mac-rice
+
 chmod +x uninstall.sh
 
 ./uninstall.sh
