@@ -130,6 +130,36 @@ git pull
 
 ---
 
+## Uninstalling
+
+To completely remove Ayu Mac Rice and restore most macOS changes:
+
+```bash
+chmod +x uninstall.sh
+
+./uninstall.sh
+```
+
+The uninstaller will:
+
+* Remove AeroSpace
+* Remove SketchyBar
+* Remove Borders
+* Remove Ghostty
+* Remove Starship
+* Remove Fastfetch
+* Remove btop
+* Remove Obsidian
+* Remove JetBrainsMono Nerd Font
+* Remove Ayu configuration files
+* Restore Dock visibility
+* Restore Menu Bar visibility
+* Restore Desktop Icons
+* Restart Finder and Dock
+
+A logout/login is recommended after uninstalling.
+
+
 ## Included Features
 
 ### SketchyBar
