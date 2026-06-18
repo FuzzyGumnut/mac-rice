@@ -242,8 +242,3 @@ A logout/login is recommended after uninstalling.
   <img src="screenshots/installer.png" width="90%">
 </p>
 
-### Desktop
-
-<p align="center">
-  <img src="screenshots/desktop.png" width="90%">
-</p>

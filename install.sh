@@ -15,24 +15,86 @@ fi
 
 clear
 
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "   __   _  _  _  _      ____  __  ___  ____ "
-echo "  / _\ ( \/ )/ )( \ ___(  _ \(  )/ __)(  __)"
-echo " /    \ )  / ) \/ ((___))   / )(( (__  ) _) "
-echo " \_/\_/(__/  \____/    (__\_)(__)\___)(____)"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "1) Full Install"
-echo "2) Exit"
-echo ""
+# ──────────────────────────────────────────────────────────
+# AYU THEME INTERACTIVE ARROW-KEY MENU (macOS Fixed Syntax)
+# ──────────────────────────────────────────────────────────
 
-read -p "Select option: " OPTION
+# Ayu Dark Palette
+AYU_GOLD=$(printf '\033[38;5;214m')
+AYU_ORANGE=$(printf '\033[38;5;208m')
+AYU_BLUE=$(printf '\033[38;5;73m')
+AYU_GRAY=$(printf '\033[38;5;244m')
+AYU_WHITE=$(printf '\033[38;5;253m')
+RESET=$(printf '\033[0m')
 
-case $OPTION in
-    1) ;;
-    *) exit 0 ;;
+options=("Full Install" "Exit")
+selected=0
+
+draw_menu() {
+    clear
+    printf "${AYU_GRAY}┌────────────────────────────────────────────────────────┐${RESET}\n"
+    printf "${AYU_GOLD}   __   _  _  _  _      ____  __  ___  ____ ${RESET}\n"
+    printf "${AYU_GOLD}  / _\ ( \/ )/ )( \ ___(  _ \(  )/ __)(  __)${RESET}\n"
+    printf "${AYU_GOLD} /    \ )  / ) \/ ((___))   / )(( (__  ) _) ${RESET}\n"
+    printf "${AYU_GOLD} \_/\_/(__/  \____/    (__\_)(__)\___)(____)${RESET}\n"
+    printf "${AYU_GRAY}└────────────────────────────────────────────────────────┘${RESET}\n"
+    printf "\n"
+
+    for i in "${!options[@]}"; do
+        if [ "$i" -eq "$selected" ]; then
+            printf "  ${AYU_ORANGE}➔ [${options[$i]}]${RESET}\n"
+        else
+            printf "      ${AYU_GRAY}${options[$i]}${RESET}\n"
+        fi
+    done
+
+    printf "\n${AYU_GRAY}──────────────────────────────────────────────────────────${RESET}\n"
+    printf "  ${AYU_BLUE}Use ↑/↓ Arrow Keys and press Enter${RESET}\n"
+}
+
+# Initial drawing
+draw_menu
+
+# Safe key interception loop
+while true; do
+    read -rsn1 key
+    
+    if [[ $key == $'\033' ]]; then
+        read -rsn2 -t 1 sequence
+        case "$sequence" in
+            "[A") # Up Arrow
+                if [ $selected -gt 0 ]; then
+                    ((selected--))
+                    draw_menu
+                fi
+                ;;
+            "[B") # Down Arrow
+                if [ $selected -lt $((${#options[@]} - 1)) ]; then
+                    ((selected++))
+                    draw_menu
+                fi
+                ;;
+        esac
+    elif [[ $key == "" || $key == $'\n' ]]; then
+        break
+    fi
+done
+
+clear
+
+# Handle selection
+case $selected in
+    0)
+        printf "${AYU_GOLD}🚀 Initializing Full Install...${RESET}\n\n"
+        sleep 1
+        ;;
+    1)
+        printf "${AYU_GRAY}Exiting setup. Goodbye!${RESET}\n\n"
+        exit 0
+        ;;
 esac
+
+# ──────────────────────────────────────────────────────────
 
 clear
 # -------------------------
