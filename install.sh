@@ -27,7 +27,7 @@ AYU_GRAY=$(printf '\033[38;5;244m')
 AYU_WHITE=$(printf '\033[38;5;253m')
 RESET=$(printf '\033[0m')
 
-options=("Full Install" "Exit")
+options=("Full Install" "Uninstall" "Exit")
 selected=0
 
 draw_menu() {
@@ -52,7 +52,7 @@ draw_menu() {
     printf "  ${AYU_BLUE}Use ↑/↓ Arrow Keys and press Enter${RESET}\n"
 }
 
-# Initial drawing
+#Initial drawing
 draw_menu
 
 # Safe key interception loop
@@ -82,13 +82,20 @@ done
 
 clear
 
-# Handle selection
 case $selected in
     0)
         printf "${AYU_GOLD}🚀 Initializing Full Install...${RESET}\n\n"
         sleep 1
         ;;
     1)
+        printf "${AYU_ORANGE}🗑️ Running Uninstaller...${RESET}\n\n"
+        sleep 1
+
+        ./uninstall.sh
+
+        exit 0
+        ;;
+    2)
         printf "${AYU_GRAY}Exiting setup. Goodbye!${RESET}\n\n"
         exit 0
         ;;
