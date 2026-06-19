@@ -27,7 +27,7 @@ AYU_GRAY=$(printf '\033[38;5;244m')
 AYU_WHITE=$(printf '\033[38;5;253m')
 RESET=$(printf '\033[0m')
 
-options=("Full Install" "Uninstall" "Exit")
+options=("Full Install" "Low Power Install" "Uninstall" "Exit")
 selected=0
 
 draw_menu() {
@@ -84,23 +84,28 @@ clear
 
 case $selected in
     0)
+        INSTALL_MODE="full"
         printf "${AYU_GOLD}🚀 Initializing Full Install...${RESET}\n\n"
         sleep 1
         ;;
     1)
-        printf "${AYU_ORANGE}🗑️ Running Uninstaller...${RESET}\n\n"
+        INSTALL_MODE="battery"
+        printf "${AYU_BLUE}🔋 Initializing Low Power Install...${RESET}\n\n"
         sleep 1
+        ;;
+    2)
+        printf "${AYU_ORANGE}🗑️ Running Uninstaller...${RESET}\n\n"
 
+        chmod +x uninstall.sh
         ./uninstall.sh
 
         exit 0
         ;;
-    2)
-        printf "${AYU_GRAY}Exiting setup. Goodbye!${RESET}\n\n"
+    3)
+        printf "${AYU_ORANGE}Exiting setup. Goodbye!${RESET}\n\n"
         exit 0
         ;;
 esac
-
 # ──────────────────────────────────────────────────────────
 
 clear
@@ -179,7 +184,6 @@ killall SystemUIServer
 brew install sketchybar || true
 brew install starship || true
 brew install fastfetch || true
-brew install borders || true
 brew install aerospace || true
 brew install btop || true
 
@@ -267,7 +271,35 @@ if [[ "$INSTALL_FIREFOX" =~ ^[Yy]$ ]]; then
         echo "✓ Installed Ayu Dark Mirage theme"
     fi
 fi
+if [[ "$INSTALL_MODE" != "battery" ]]; then
+    brew install borders || true
+fi
 
+if [[ "$INSTALL_MODE" == "battery" ]]; then
+
+    echo ""
+    echo "Applying Ayu Low Power Mode..."
+
+    defaults write com.apple.universalaccess reduceTransparency -bool true
+    defaults write com.apple.universalaccess reduceMotion -bool true
+
+    sudo pmset -b lowpowermode 1
+
+    cp .config/sketchybar/sketchybar-Lite \
+       .config/sketchybar/sketchybarrc
+
+    USE_BORDERS="false"
+
+    echo "✓ Low Power Mode enabled"
+    echo "✓ Using SketchyBar Lite"
+
+else
+
+    USE_BORDERS="true"
+
+    echo "✓ Using Full SketchyBar"
+
+fi
 # -------------------------
 # Config Directories
 # -------------------------
@@ -295,7 +327,9 @@ chmod +x ~/.config/sketchybar/plugins/*.sh 2>/dev/null
 # Start Services
 # -------------------------
 brew services restart sketchybar
-brew services start borders || true
+if [[ "$INSTALL_MODE" != "battery" ]]; then
+    brew services start borders || true
+fi
 # -------------------------
 # Reload AeroSpace
 # -------------------------
@@ -321,11 +355,13 @@ echo "Enable:"
 echo "  • AeroSpace"
 echo "  • SketchyBar"
 echo ""
-echo "Recommended:"
-echo "  • Spotify"
-echo "  • Tailscale"
-echo "  • X-VPN"
-echo "  • Raycast"
+if [[ "$INSTALL_MODE" == "battery" ]]; then
+    echo "🔋 Ayu Low Power Mode Installed"
+    echo "• SketchyBar Lite"
+    echo "• Borders Disabled"
+else
+    echo "🚀 Full Ayu Install"
+fi
 echo ""
 echo ""
 echo "⚠️ For AeroSpace, Borders and permissions to work correctly:"

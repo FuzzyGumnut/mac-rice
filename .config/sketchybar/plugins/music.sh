@@ -1,4 +1,4 @@
-k#!/bin/bash
+#!/bin/bash
 
 if ! pgrep -x "Spotify" >/dev/null; then
     sketchybar --set "$NAME" label="No Music"
@@ -13,13 +13,6 @@ tell application "Spotify"
 end tell
 EOF
 )
-
-ART=$(osascript -e 'tell application "Spotify" to artwork url of current track' 2>/dev/null)
-
-if [ -n "$ART" ]; then
-    curl -sL "$ART" -o /tmp/spotify_art.jpg
-    sketchybar --set "$NAME" image="/tmp/spotify_art.jpg"
-fi
 
 [ -z "$SONG" ] && SONG="Paused"
 
