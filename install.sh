@@ -224,6 +224,49 @@ read -p "⚡ Install Raycast? (y/N): " INSTALL_RAYCAST
 if [[ "$INSTALL_RAYCAST" =~ ^[Yy]$ ]]; then
     brew install --cask raycast
 fi
+clear
+
+echo ""
+read -p "🦊 Install Firefox? (y/N): " INSTALL_FIREFOX
+
+if [[ "$INSTALL_FIREFOX" =~ ^[Yy]$ ]]; then
+    brew install --cask firefox
+
+    brew install defaultbrowser || true
+    defaultbrowser firefox
+
+    echo ""
+    echo "✓ Firefox set as default browser"
+
+    echo ""
+    echo "Creating Firefox profile..."
+    open -a Firefox
+
+    sleep 10
+
+    killall Firefox 2>/dev/null || true
+
+    PROFILE=$(find "$HOME/Library/Application Support/Firefox/Profiles" \
+        -maxdepth 1 \
+        -type d \
+        -name "*.default-release*" | head -n 1)
+
+    if [ -n "$PROFILE" ]; then
+        mkdir -p "$PROFILE/extensions"
+
+        (
+            cd theme_files
+            zip -qr "../ayu-dark-mirage.xpi" .
+        )
+
+        cp ayu-dark-mirage.xpi \
+        "$PROFILE/extensions/{898990db-1075-4dcd-b34a-c26a2bcf074b}.xpi"
+
+        rm -f ayu-dark-mirage.xpi
+
+        echo "✓ Installed Ayu Dark Mirage theme"
+    fi
+fi
 
 # -------------------------
 # Config Directories

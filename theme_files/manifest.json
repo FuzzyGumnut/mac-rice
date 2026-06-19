@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "version": "2.1",
+  "name": "Ayu Dark Mirage",
+  "theme": {
+    "colors": {
+      "toolbar": "rgb(31, 36, 48)",
+      "toolbar_text": "rgb(255, 204, 102)",
+      "frame": "rgb(23, 27, 36)",
+      "tab_background_text": "rgb(204, 202, 194)",
+      "toolbar_field": "rgb(23, 27, 36)",
+      "toolbar_field_text": "rgb(92, 207, 230)",
+      "tab_line": "rgb(92, 207, 230)",
+      "popup": "rgb(31, 36, 48)",
+      "popup_text": "rgb(255, 204, 102)",
+      "button_background_hover": "rgba(255, 204, 102, 0.24)",
+      "icons_attention": "rgb(92, 207, 230)",
+      "ntp_background": "rgb(23, 27, 36)",
+      "popup_border": "rgba(255, 204, 102, 0.24)",
+      "popup_highlight_text": "rgb(23, 27, 36)",
+      "popup_highlight": "rgb(92, 207, 230)",
+      "sidebar_border": "rgba(255, 204, 102, 0.24)",
+      "sidebar_text": "rgb(255, 204, 102)",
+      "sidebar": "rgb(23, 27, 36)",
+      "toolbar_bottom_separator": "rgba(255, 204, 102, 0.24)",
+      "toolbar_field_border": "rgb(23, 27, 36)",
+      "toolbar_field_focus": "rgb(31, 36, 48)",
+      "toolbar_field_highlight_text": "rgb(92, 207, 230)",
+      "toolbar_field_text_focus": "rgb(255, 204, 102)",
+      "toolbar_top_separator": "rgb(31, 36, 48)",
+      "tab_loading": "rgb(92, 207, 230)"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{898990db-1075-4dcd-b34a-c26a2bcf074b}"
+    }
+  }
+}
