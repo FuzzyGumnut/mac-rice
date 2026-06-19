@@ -91,6 +91,13 @@ echo "Cleaning Homebrew..."
 brew autoremove
 brew cleanup
 
+echo "Restoring power settings..."
+
+sudo pmset -b lowpowermode 0 2>/dev/null || true
+
+defaults write com.apple.universalaccess reduceTransparency -bool false
+defaults write com.apple.universalaccess reduceMotion -bool false
+
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "      AYU MAC RICE REMOVED"
