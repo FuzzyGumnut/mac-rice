@@ -284,7 +284,8 @@ if [[ "$INSTALL_MODE" == "battery" ]]; then
     defaults write com.apple.universalaccess reduceMotion -bool true
 
     sudo pmset -b lowpowermode 1
-
+sudo pmset -b tcpkeepalive 0
+sudo pmset -b powernap 0
     cp .config/sketchybar/sketchybar-Lite \
        .config/sketchybar/sketchybarrc
 
@@ -364,7 +365,12 @@ else
 fi
 echo ""
 echo ""
-echo "⚠️ For AeroSpace, Borders and permissions to work correctly:"
+if [[ "$INSTALL_MODE" == "battery" ]]; then
+    echo "⚠️ For AeroSpace permissions to work correctly:"
+else
+    echo "⚠️ For AeroSpace, Borders and permissions to work correctly:"
+fi
+
 echo "   Log out and back in after enabling permissions."
 
 clear
@@ -395,7 +401,9 @@ end tell
 EOF
 
 sleep 1
-open -a Spotify
+if [ -d "/Applications/Spotify.app" ]; then
+    open -a Spotify
+fi
 
 sleep 2
 
