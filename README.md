@@ -39,6 +39,8 @@ git clone https://github.com/FuzzyGumnut/mac-rice.git
 cd mac-rice
 
 chmod +x install.sh
+chmod +x uninstall.sh
+
 
 ./install.sh
 ```
@@ -140,6 +142,8 @@ git clone https://github.com/FuzzyGumnut/mac-rice.git
 cd mac-rice
 
 chmod +x install.sh
+chmod +x uninstall.sh
+
 
 ./install.sh
 
