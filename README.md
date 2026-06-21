@@ -1,6 +1,6 @@
 # Ayu Mac Rice
 <p align="center">
-  <img src="screenshots/Desktop.png" width="90%">
+  <img src="screenshots/installer.png" width="90%">
 </p>
 
 A minimal Ayu-themed macOS rice built around AeroSpace, SketchyBar and Ghostty.
