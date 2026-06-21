@@ -284,22 +284,29 @@ if [[ "$INSTALL_MODE" == "battery" ]]; then
     defaults write com.apple.universalaccess reduceMotion -bool true
 
     sudo pmset -b lowpowermode 1
-sudo pmset -b tcpkeepalive 0
-sudo pmset -b powernap 0
-    cp .config/sketchybar/sketchybar-Lite \
-       .config/sketchybar/sketchybarrc
+    sudo pmset -b tcpkeepalive 0
+    sudo pmset -b powernap 0
 
     USE_BORDERS="false"
 
     echo "✓ Low Power Mode enabled"
-    echo "✓ Using SketchyBar Lite"
 
 else
 
     USE_BORDERS="true"
 
-    echo "✓ Using Full SketchyBar"
+fi
+cp -R .config/* ~/.config/
+if [[ "$INSTALL_MODE" == "battery" ]]; then
+    cp .config/sketchybar/sketchybar-Lite \
+       ~/.config/sketchybar/sketchybarrc
 
+    echo "✓ Using SketchyBar Lite"
+else
+    cp .config/sketchybar/sketchybarrc \
+       ~/.config/sketchybar/sketchybarrc
+
+    echo "✓ Using Full SketchyBar"
 fi
 # -------------------------
 # Config Directories
@@ -312,8 +319,6 @@ mkdir -p ~/.config/ghostty
 # -------------------------
 # Copy Configs
 # -------------------------
-cp -R .config/* ~/.config/
-
 cp .zshrc ~/
 
 if [ -f starship.toml ]; then
